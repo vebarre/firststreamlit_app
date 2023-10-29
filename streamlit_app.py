@@ -16,8 +16,10 @@ st.text('🍰 Cheesecake')
 st.text('             ')
 st.header('Dinner:')
 st.text('------------')
-st.text('🐔 🧂 🥚 🍽️ Eggs with mushrooms, peppers, chicken and cheese with a dash of salt and pepper')
-st.text('Yogurt')
+st.text('🐥 🧂 🥚 🍽️ 🍳 Eggs with mushrooms, peppers, chicken and cheese with a dash of salt and pepper')
+st.text('🍦 Yogurt')
 st.text('🚰 Water')
+
+
 
 
