@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd 
+from requests import get
 my_fruit_list=pd.read_csv('https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt')
 my_fruit_list=my_fruit_list.set_index('Fruit')
 st.title('New family healthy dinner')
@@ -26,6 +27,9 @@ st.header('Dinner:')
 st.text('🍽️ 🍳 Eggs with mushrooms, peppers, chicken and cheese with a dash of salt and pepper')
 st.text('🍦 Yogurt')
 st.text('🚰 Water')
+
+fruityvice_response = get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
 
 
 
