@@ -30,7 +30,7 @@ st.text('🚰 Water')
 
 
 st.header("Fruityvice Fruit Advice!")
-fruit_choice=st.text_choice('Enter the fruit of your choice: ','Kiwi')
+fruit_choice=st.text_input ('Enter the fruit of your choice: ','Kiwi')
 ##fruityvice_response = get("https://fruityvice.com/api/fruit/all")
 st.write("You entered: ",fruit_choice)
 fruityvice_response = get("https://fruityvice.com/api/fruit/"+fruit_choice)
