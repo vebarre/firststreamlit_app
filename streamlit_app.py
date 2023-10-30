@@ -28,8 +28,12 @@ st.text('🍽️ 🍳 Eggs with mushrooms, peppers, chicken and cheese with a da
 st.text('🍦 Yogurt')
 st.text('🚰 Water')
 
-fruityvice_response = get("https://fruityvice.com/api/fruit/all")
+
 st.header("Fruityvice Fruit Advice!")
+fruit_choice=st.text_choice("Enter the fruit of your choice: ",'Kiwi')
+##fruityvice_response = get("https://fruityvice.com/api/fruit/all")
+st.write("You entered: ",fruit_choice)
+fruityvice_response = get("https://fruityvice.com/api/fruit/"+fruit_choice)
 ##st.text(fruityvice_response.json())
 fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
 st.dataframe(fruityvice_normalized)
