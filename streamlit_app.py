@@ -28,7 +28,7 @@ st.text('🍽️ 🍳 Eggs with mushrooms, peppers, chicken and cheese with a da
 st.text('🍦 Yogurt')
 st.text('🚰 Water')
 
-fruityvice_response = get("https://fruityvice.com/api/fruit/watermelon")
+fruityvice_response = get("https://fruityvice.com/api/fruit/all")
 st.header("Fruityvice Fruit Advice!")
 st.text(fruityvice_response.json())
 
