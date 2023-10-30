@@ -30,7 +30,9 @@ st.text('🚰 Water')
 
 fruityvice_response = get("https://fruityvice.com/api/fruit/all")
 st.header("Fruityvice Fruit Advice!")
-st.text(fruityvice_response.json())
+##st.text(fruityvice_response.json())
+fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
+st.dataframe(fruityvice_normalized)
 
 
 
