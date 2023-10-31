@@ -34,6 +34,12 @@ st.text('🍦 Yogurt')
 st.text('🚰 Water')
 
 
+def fruity_choice(choice_made):
+    fruityvice_response = get("https://fruityvice.com/api/fruit/"+fruit_choice)
+    ##st.text(fruityvice_response.json())
+    fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
+    return fruityvice_normalized
+
 st.header("Fruityvice Fruit Advice!")
 try:
   fruit_choice=st.text_input ('Enter the fruit of your choice: ')
@@ -42,10 +48,7 @@ try:
 ##fruityvice_response = get("https://fruityvice.com/api/fruit/all")
   else:
     #st.write("You entered: ",fruit_choice)
-    fruityvice_response = get("https://fruityvice.com/api/fruit/"+fruit_choice)
-    ##st.text(fruityvice_response.json())
-    fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
-    st.dataframe(fruityvice_normalized)
+    st.dataframe(fruity_choice(fruit_choice))
 except URLError as e:
   st.error()
 st.stop()
