@@ -1,4 +1,4 @@
-pip install --upgrade snowflake-connector-python
+!pip install --upgrade snowflake-connector-python
 
 import streamlit as st
 import pandas as pd 
