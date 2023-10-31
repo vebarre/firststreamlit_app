@@ -49,6 +49,9 @@ my_data_row = my_cur.fetchall()
 st.header("The fruit list contains: ")
 st.dataframe(my_data_row)
 
+new_fruit=st.text_input("Enter the fruit you would like to add: ")
+st.write("You entered: ",new_fruit)
+
 
 
 
