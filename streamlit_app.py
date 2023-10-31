@@ -34,11 +34,17 @@ st.text('🍦 Yogurt')
 st.text('🚰 Water')
 
 
+st.header('The fruit load list contains:')
 def fruity_choice(choice_made):
     fruityvice_response = get("https://fruityvice.com/api/fruit/"+fruit_choice)
     ##st.text(fruityvice_response.json())
     fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
     return fruityvice_normalized
+
+def get_fruit_load_list():
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute('select * from fruit_load_list')
+        return my_cur.fetchall()
 
 st.header("Fruityvice Fruit Advice!")
 try:
@@ -51,16 +57,22 @@ try:
     st.dataframe(fruity_choice(fruit_choice))
 except URLError as e:
   st.error()
+
+
+
+#my_cur = my_cnx.cursor()
+#my_cur.execute("select * from fruit_load_list")
+if st.button('Get Fruit Load list'):
+    my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+    my_data_row = get_fruit_load_list()
+    st.dataframe(my_data_row)
+    
+
+
+#st.header("The fruit list contains: ")
+
 st.stop()
-
-my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("select * from fruit_load_list")
 my_cur.execute("insert into fruit_load_list values ('from streamlit')")
-my_data_row = my_cur.fetchall()
-st.header("The fruit list contains: ")
-st.dataframe(my_data_row)
-
 new_fruit=st.text_input("Enter the fruit you would like to add: ")
 st.write("You entered: ",new_fruit)
 
