@@ -41,7 +41,7 @@ try:
     st.error("Please select a fruit to get information.")
 ##fruityvice_response = get("https://fruityvice.com/api/fruit/all")
   else:
-    st.write("You entered: ",fruit_choice)
+    #st.write("You entered: ",fruit_choice)
     fruityvice_response = get("https://fruityvice.com/api/fruit/"+fruit_choice)
     ##st.text(fruityvice_response.json())
     fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
