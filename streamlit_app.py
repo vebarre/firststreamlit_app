@@ -35,13 +35,19 @@ st.text('🚰 Water')
 
 
 st.header("Fruityvice Fruit Advice!")
-fruit_choice=st.text_input ('Enter the fruit of your choice: ','Kiwi')
+try:
+  fruit_choice=st.text_input ('Enter the fruit of your choice: ','Kiwi')
+  if not fruit_choice:
+    st.error("Please select a fruit to get information.")
 ##fruityvice_response = get("https://fruityvice.com/api/fruit/all")
-st.write("You entered: ",fruit_choice)
-fruityvice_response = get("https://fruityvice.com/api/fruit/"+fruit_choice)
-##st.text(fruityvice_response.json())
-fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
-st.dataframe(fruityvice_normalized)
+  else:
+    st.write("You entered: ",fruit_choice)
+    fruityvice_response = get("https://fruityvice.com/api/fruit/"+fruit_choice)
+    ##st.text(fruityvice_response.json())
+    fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
+    st.dataframe(fruityvice_normalized)
+except URLError as e:
+  st.error()
 st.stop()
 
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
