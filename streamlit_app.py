@@ -36,7 +36,7 @@ st.text('🚰 Water')
 
 st.header("Fruityvice Fruit Advice!")
 try:
-  fruit_choice=st.text_input ('Enter the fruit of your choice: ','Kiwi')
+  fruit_choice=st.text_input ('Enter the fruit of your choice: ')
   if not fruit_choice:
     st.error("Please select a fruit to get information.")
 ##fruityvice_response = get("https://fruityvice.com/api/fruit/all")
