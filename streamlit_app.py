@@ -3,7 +3,7 @@
 import streamlit as st
 import pandas as pd 
 from requests import get
-import snowflake.connector as snw
+import snowflake.connector
 
 my_fruit_list=pd.read_csv('https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt')
 my_fruit_list=my_fruit_list.set_index('Fruit')
@@ -42,7 +42,7 @@ fruityvice_response = get("https://fruityvice.com/api/fruit/"+fruit_choice)
 fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
 st.dataframe(fruityvice_normalized)
 
-my_cnx = sw.connect(**st.secrets["snowflake"])
+my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
